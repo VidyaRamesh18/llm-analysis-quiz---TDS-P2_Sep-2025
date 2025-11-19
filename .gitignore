@@ -205,3 +205,23 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+# Environment variables
+   .env
+   .env.local
+
+   # Python
+   __pycache__/
+   *.pyc
+   .venv/
+   venv/
+   *.egg-info/
+
+   # Node
+   node_modules/
+   npm-debug.log*
+
+   # OS
+   .DS_Store
+   Thumbs.db
