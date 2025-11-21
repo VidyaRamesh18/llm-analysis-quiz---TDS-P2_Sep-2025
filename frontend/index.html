@@ -1,0 +1,31 @@
+<!-- frontend/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>LLM Quiz API Status</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" style="text-align:center;">
+        <h1>LLM Quiz Solver Status</h1>
+        <p>The backend API is <span id="apiStatus">checking...</span></p>
+        <button onclick="checkStatus()">Check API Now</button>
+        <pre id="statusResult"></pre>
+    </div>
+    <script>
+    async function checkStatus() {
+        document.getElementById('apiStatus').innerText = 'checking...';
+        try {
+            let res = await fetch('http://localhost:5000/health');
+            let data = await res.json();
+            document.getElementById('apiStatus').innerText = data.status;
+            document.getElementById('statusResult').innerText = JSON.stringify(data, null, 2);
+        } catch (e) {
+            document.getElementById('apiStatus').innerText = 'offline';
+        }
+    }
+    checkStatus();
+    </script>
+</body>
+</html>
